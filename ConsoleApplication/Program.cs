@@ -3,6 +3,7 @@ using NinjaDomain.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
 namespace ConsoleApplication
 {
@@ -12,9 +13,9 @@ namespace ConsoleApplication
         {
             Database.SetInitializer(new NullDatabaseInitializer<NinjaContext>());
             //InsertNinja();
-            InsertMultipleNinjas();
+            //InsertMultipleNinjas();
             //InsertNinjaWithEquipment();
-            //SimpleNinjaQuery();
+            SimpleNinjaQueries();
             //SimpleNinjaGraphQuery();
             //QueryAndUpdateNinja();
             //QueryAndUpdateNinjaDisconnected();
@@ -60,6 +61,24 @@ namespace ConsoleApplication
                 context.Database.Log = Console.WriteLine;
                 context.Ninjas.AddRange(new List<Ninja> { ninja1, ninja2 });
                 context.SaveChanges();
+            }
+        }
+
+        private static void SimpleNinjaQueries()
+        {
+            using (var context = new NinjaContext())
+            {
+                var ninja = context.Ninjas
+                    .Where(n => n.DateOfBirth >= new DateTime(1984, 1, 1))
+                    .OrderBy(n => n.Name)
+                    .Skip(1).Take(1)
+                    .FirstOrDefault();
+                //var query = context.Ninjas;
+                //var someninjas = query.ToList();
+                //foreach (var ninja in ninjas)
+                //{
+                    Console.WriteLine(ninja.Name);
+                //}
             }
         }
     }
