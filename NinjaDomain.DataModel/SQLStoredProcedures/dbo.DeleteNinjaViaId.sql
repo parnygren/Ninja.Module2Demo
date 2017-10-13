@@ -1,0 +1,3 @@
+﻿CREATE PROCEDURE DeleteNinjaViaId @Id int
+AS
+DELETE FROM Ninjas WHERE Id = @Id
