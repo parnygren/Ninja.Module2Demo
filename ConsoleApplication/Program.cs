@@ -3,8 +3,8 @@ using NinjaDomain.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 
 namespace ConsoleApplication
 {
@@ -12,6 +12,9 @@ namespace ConsoleApplication
     {
         static void Main(string[] args)
         {
+            var a = Directory.GetCurrentDirectory();
+
+            AppDomain.CurrentDomain.SetData("DataDirectory", @"C:\SVN\projects\Casey\app\Telia.Casey.Web\App_Data\");
             Database.SetInitializer(new NullDatabaseInitializer<NinjaContext>());
             //InsertNinja();
             //InsertMultipleNinjas();

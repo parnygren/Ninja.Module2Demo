@@ -82,13 +82,14 @@ namespace NinjaDomain.DataModel
             }
         }
 
-#if false
-  /// <summary>
-  /// Quick way to initialize and seed the database on first use.
-  /// </summary>
-    public ConnectedRepository() {
-      DataHelpers.NewDbWithSeed();
-    }
+#if true
+        /// <summary>
+        /// Quick way to initialize and seed the database on first use.
+        /// </summary>
+        public ConnectedRepository()
+        {
+            DataHelpers.NewDbWithSeed();
+        }
 #endif
     }
 }

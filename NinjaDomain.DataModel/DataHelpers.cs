@@ -10,7 +10,6 @@ namespace NinjaDomain.DataModel
     {
         public static void NewDbWithSeed()
         {
-
             Database.SetInitializer(new DropCreateDatabaseAlways<NinjaContext>());
             using (var context = new NinjaContext())
             {
